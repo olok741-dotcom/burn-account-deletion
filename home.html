@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>BURN — Pay money. Get nothing.</title>
+  <meta
+    name="description"
+    content="BURN. Pay money. Get nothing. A global social experiment."
+  >
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      background: #050505;
+      color: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 1100px;
+      min-height: 100vh;
+      padding: 42px 28px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER */
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: #ff5a1f;
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: 7px;
+    }
+
+    .status {
+      color: #666666;
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    /* HERO */
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 0;
+    }
+
+    .hero {
+      width: 100%;
+    }
+
+    .eyebrow {
+      color: #777777;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(44px, 8vw, 92px);
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: -3px;
+    }
+
+    .orange {
+      color: #ff5a1f;
+    }
+
+    .tagline {
+      margin-top: 28px;
+      color: #888888;
+      font-size: clamp(16px, 2vw, 20px);
+      letter-spacing: 1px;
+    }
+
+    /* TOTAL */
+
+    .total-section {
+      margin-top: 90px;
+    }
+
+    .total-label {
+      color: #666666;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      margin-bottom: 14px;
+    }
+
+    .total {
+      font-size: clamp(42px, 7vw, 78px);
+      font-weight: 900;
+      letter-spacing: -2px;
+    }
+
+    /* LAUNCH */
+
+    .launch {
+      margin-top: 75px;
+    }
+
+    .launch-badge {
+      display: inline-block;
+      border: 1px solid #292929;
+      color: #aaaaaa;
+      padding: 14px 22px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+
+    /* SOCIAL */
+
+    .social {
+      margin-top: 38px;
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .social a {
+      color: #777777;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      transition: color 0.2s ease;
+    }
+
+    .social a:hover {
+      color: #ff5a1f;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid #171717;
+      padding-top: 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .copyright {
+      color: #444444;
+      font-size: 11px;
+    }
+
+    .legal {
+      display: flex;
+      gap: 20px;
+    }
+
+    .legal a {
+      color: #555555;
+      text-decoration: none;
+      font-size: 11px;
+    }
+
+    .legal a:hover {
+      color: #999999;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+      .page {
+        padding: 28px 20px;
+      }
+
+      .status {
+        display: none;
+      }
+
+      main {
+        padding: 60px 0;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      .total-section {
+        margin-top: 70px;
+      }
+
+      .launch {
+        margin-top: 60px;
+      }
+
+      footer {
+        justify-content: center;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page">
+
+    <header>
+      <div class="logo">BURN</div>
+      <div class="status">GLOBAL</div>
+    </header>
+
+    <main>
+      <div class="hero">
+
+        <div class="eyebrow">
+          A GLOBAL SOCIAL EXPERIMENT
+        </div>
+
+        <h1>
+          PAY MONEY.<br>
+          <span class="orange">GET NOTHING.</span>
+        </h1>
+
+        <div class="tagline">
+          No product. No reward. Just BURN.
+        </div>
+
+        <div class="total-section">
+          <div class="total-label">
+            HUMANITY HAS BURNED
+          </div>
+
+          <div class="total">
+            $2,033,126
+          </div>
+        </div>
+
+        <div class="launch">
+          <div class="launch-badge">
+            LAUNCHING ON ANDROID
+          </div>
+        </div>
+
+        <div class="social">
+          <a href="https://www.tiktok.com/@burnglobal"
+             target="_blank">
+            TIKTOK
+          </a>
+
+          <a href="https://www.instagram.com/burn_global/"
+             target="_blank">
+            INSTAGRAM
+          </a>
+
+          <a href="https://www.youtube.com/@burnglobal"
+             target="_blank">
+            YOUTUBE
+          </a>
+        </div>
+
+      </div>
+    </main>
+
+    <footer>
+
+      <div class="copyright">
+        © 2026 BURN
+      </div>
+
+      <div class="legal">
+        <a href="privacy.html">
+          PRIVACY
+        </a>
+
+        <a href="index.html">
+          DELETE ACCOUNT
+        </a>
+      </div>
+
+    </footer>
+
+  </div>
+
+</body>
+</html>

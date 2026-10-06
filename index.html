@@ -41,15 +41,15 @@
     }
 
     /* BURN LOGO */
-.logo {
-  color: #ff5a1f;
-  font-size: clamp(42px, 5vw, 68px);
-  font-weight: 900;
-  letter-spacing: 14px;
-  margin-top: 35px;
-  margin-bottom: 70px;
-  padding-left: 14px;
-}
+    .logo {
+      color: #ff5a1f;
+      font-size: clamp(42px, 5vw, 68px);
+      font-weight: 900;
+      letter-spacing: 14px;
+      margin-top: 35px;
+      margin-bottom: 70px;
+      padding-left: 14px;
+    }
 
     /* TOTAL */
     .label {
@@ -75,12 +75,12 @@
     }
 
     .slogan {
-  font-size: clamp(26px, 3.5vw, 42px);
-  line-height: 1.2;
-  font-weight: 900;
-  letter-spacing: 1px;
-  white-space: nowrap;
-}
+      font-size: clamp(26px, 3.5vw, 42px);
+      line-height: 1.2;
+      font-weight: 900;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
 
     .sub {
       margin-top: 16px;
@@ -154,15 +154,15 @@
       HUMANITY HAS BURNED
     </div>
 
-    <div class="total">
-  $0
-</div>
+    <div class="total" id="burnTotal">
+      $0
+    </div>
 
     <div class="message">
 
-     <div class="slogan">
-  PAY MONEY. GET NOTHING.
-</div>
+      <div class="slogan">
+        PAY MONEY. GET NOTHING.
+      </div>
 
       <div class="sub">
         No product. No reward. Just BURN.
@@ -195,8 +195,126 @@
 <footer>
   © 2026 BURN
   <a href="privacy.html">PRIVACY</a>
-  <a href="index.html">DELETE ACCOUNT</a>
+  <a href="delete-account.html">DELETE ACCOUNT</a>
 </footer>
+
+
+<script>
+  // =========================================================
+  // BURN — GLOBAL TOTAL
+  // Supabase app_stats → id: global → total_burned
+  // =========================================================
+
+  const SUPABASE_URL =
+    'https://henyqkihesudarbmefkh.supabase.co';
+
+  const SUPABASE_KEY =
+    'sb_publishable_MVxSAmIK6avA7wYCBSuGSg_0-5ApdIl';
+
+  const TOTAL_ELEMENT =
+    document.getElementById('burnTotal');
+
+
+  // ---------------------------------------------------------
+  // 숫자 표시
+  // ---------------------------------------------------------
+
+  function formatBurnTotal(value) {
+
+    const number = Number(value);
+
+    if (!Number.isFinite(number)) {
+      return '$0';
+    }
+
+    return '$' + number.toLocaleString(
+      'en-US',
+      {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2
+      }
+    );
+  }
+
+
+  // ---------------------------------------------------------
+  // Supabase에서 현재 총액 가져오기
+  // ---------------------------------------------------------
+
+  async function loadBurnTotal() {
+
+    try {
+
+      const response = await fetch(
+        SUPABASE_URL +
+        '/rest/v1/app_stats?id=eq.global&select=total_burned',
+        {
+          method: 'GET',
+
+          headers: {
+            'apikey': SUPABASE_KEY,
+            'Authorization': 'Bearer ' + SUPABASE_KEY
+          },
+
+          cache: 'no-store'
+        }
+      );
+
+
+      if (!response.ok) {
+        throw new Error(
+          'Supabase request failed: ' +
+          response.status
+        );
+      }
+
+
+      const data = await response.json();
+
+
+      if (
+        Array.isArray(data) &&
+        data.length > 0 &&
+        data[0].total_burned !== undefined
+      ) {
+
+        TOTAL_ELEMENT.textContent =
+          formatBurnTotal(
+            data[0].total_burned
+          );
+      }
+
+    } catch (error) {
+
+      console.error(
+        'Failed to load BURN total:',
+        error
+      );
+
+      // 오류가 발생해도 사이트 자체는 정상 표시
+      // 마지막 표시값을 그대로 유지
+    }
+  }
+
+
+  // ---------------------------------------------------------
+  // 최초 로딩
+  // ---------------------------------------------------------
+
+  loadBurnTotal();
+
+
+  // ---------------------------------------------------------
+  // 10초마다 총액 확인
+  // 페이지 새로고침 필요 없음
+  // ---------------------------------------------------------
+
+  setInterval(
+    loadBurnTotal,
+    10000
+  );
+
+</script>
 
 </body>
 </html>

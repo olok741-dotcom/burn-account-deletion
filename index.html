@@ -3,165 +3,200 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BURN - Account Deletion</title>
+
+  <title>BURN — Pay money. Get nothing.</title>
 
   <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      background: #050505;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     body {
-      margin: 0;
-      background: #050505;
-      color: #ffffff;
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    .container {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 60px 24px 80px;
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 50px 24px;
     }
 
-    .logo {
-      color: #ff5a1f;
-      font-size: 26px;
+    .hero {
+      width: 100%;
+    }
+
+    /* BURN LOGO */
+.logo {
+  color: #ff5a1f;
+  font-size: clamp(42px, 5vw, 68px);
+  font-weight: 900;
+  letter-spacing: 14px;
+  margin-top: 35px;
+  margin-bottom: 70px;
+  padding-left: 14px;
+}
+
+    /* TOTAL */
+    .label {
+      color: #666;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      margin-bottom: 18px;
+    }
+
+    .total {
+      color: #fff;
+      font-size: clamp(64px, 11vw, 150px);
+      line-height: 1;
       font-weight: 900;
-      letter-spacing: 7px;
-      margin-bottom: 50px;
+      letter-spacing: -5px;
+      white-space: nowrap;
     }
 
-    h1 {
-      font-size: 30px;
-      margin-bottom: 16px;
+    /* SLOGAN */
+    .message {
+      margin-top: 70px;
     }
 
-    h2 {
-      font-size: 17px;
-      margin-top: 42px;
-      margin-bottom: 14px;
-    }
+    .slogan {
+  font-size: clamp(26px, 3.5vw, 42px);
+  line-height: 1.2;
+  font-weight: 900;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
 
-    p, li {
-      color: #aaaaaa;
+    .sub {
+      margin-top: 16px;
+      color: #666;
       font-size: 15px;
     }
 
-    .box {
-      margin-top: 20px;
-      padding: 22px;
-      background: #0d0d0d;
-      border: 1px solid #252525;
-      border-radius: 8px;
+    /* SOCIAL */
+    .social {
+      margin-top: 70px;
+      display: flex;
+      justify-content: center;
+      gap: 28px;
     }
 
-    .path {
+    .social a {
+      color: #555;
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .social a:hover {
       color: #ff5a1f;
-      font-weight: bold;
-    }
-
-    hr {
-      border: 0;
-      border-top: 1px solid #222222;
-      margin: 50px 0;
-    }
-
-    .warning {
-      color: #888888;
-      font-size: 13px;
     }
 
     footer {
-      margin-top: 60px;
-      color: #555555;
-      font-size: 12px;
+      padding: 25px;
+      text-align: center;
+      color: #333;
+      font-size: 10px;
+    }
+
+    footer a {
+      color: #444;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    @media (max-width: 600px) {
+      .logo {
+        margin-bottom: 75px;
+      }
+
+      .total {
+        letter-spacing: -3px;
+      }
+
+      .message {
+        margin-top: 55px;
+      }
+
+      .social {
+        margin-top: 55px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <div class="container">
+<main>
+  <div class="hero">
 
-    <div class="logo">BURN</div>
-
-    <h1>Account Deletion</h1>
-
-    <p>
-      BURN users can permanently delete their account
-      and associated data directly from the BURN app.
-    </p>
-
-    <h2>How to delete your account</h2>
-
-    <div class="box">
-      <p>1. Open the BURN app.</p>
-      <p>2. Log in to your account.</p>
-      <p>3. Open the <strong>MY</strong> tab.</p>
-      <p>
-        4. Scroll down and select
-        <span class="path">DELETE ACCOUNT</span>.
-      </p>
-      <p>5. Confirm the deletion.</p>
+    <div class="logo">
+      BURN
     </div>
 
-    <h2>Data that will be deleted</h2>
-
-    <ul>
-      <li>Account and authentication information</li>
-      <li>Profile information</li>
-      <li>Chat messages associated with the account</li>
-      <li>Burn history associated with the account</li>
-      <li>Blocked-user data associated with the account</li>
-    </ul>
-
-    <p class="warning">
-      Account deletion is permanent and cannot be undone.
-    </p>
-
-    <hr>
-
-    <h1>계정 삭제</h1>
-
-    <p>
-      BURN 사용자는 앱에서 계정과 관련 데이터를
-      영구적으로 삭제할 수 있습니다.
-    </p>
-
-    <h2>계정 삭제 방법</h2>
-
-    <div class="box">
-      <p>1. BURN 앱을 실행합니다.</p>
-      <p>2. 계정에 로그인합니다.</p>
-      <p>3. <strong>MY</strong> 탭으로 이동합니다.</p>
-      <p>
-        4. 화면 아래의
-        <span class="path">DELETE ACCOUNT</span>
-        를 선택합니다.
-      </p>
-      <p>5. 계정 삭제를 확인합니다.</p>
+    <div class="label">
+      HUMANITY HAS BURNED
     </div>
 
-    <h2>삭제되는 데이터</h2>
+    <div class="total">
+  $0
+</div>
 
-    <ul>
-      <li>계정 및 인증 정보</li>
-      <li>프로필 정보</li>
-      <li>계정과 연결된 채팅 메시지</li>
-      <li>계정과 연결된 BURN 기록</li>
-      <li>계정과 연결된 차단 사용자 데이터</li>
-    </ul>
+    <div class="message">
 
-    <p class="warning">
-      계정 삭제는 영구적이며 삭제 후 복구할 수 없습니다.
-    </p>
+     <div class="slogan">
+  PAY MONEY. GET NOTHING.
+</div>
 
-    <footer>
-      BURN · Account Deletion
-    </footer>
+      <div class="sub">
+        No product. No reward. Just BURN.
+      </div>
+
+    </div>
+
+    <div class="social">
+
+      <a href="https://www.tiktok.com/@burnglobal"
+         target="_blank">
+        TIKTOK
+      </a>
+
+      <a href="https://www.instagram.com/burn_global/"
+         target="_blank">
+        INSTAGRAM
+      </a>
+
+      <a href="https://www.youtube.com/@burnglobal"
+         target="_blank">
+        YOUTUBE
+      </a>
+
+    </div>
 
   </div>
+</main>
+
+<footer>
+  © 2026 BURN
+  <a href="privacy.html">PRIVACY</a>
+  <a href="index.html">DELETE ACCOUNT</a>
+</footer>
 
 </body>
 </html>

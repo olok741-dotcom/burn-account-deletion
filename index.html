@@ -318,6 +318,10 @@ body.live-mode #livePage {
 }
 
 .rank-flag {
+  width: 28px;
+  height: 21px;
+  object-fit: cover;
+  vertical-align: middle;
   margin-right: 8px;
 }
 
@@ -947,12 +951,25 @@ function updateLeaderboard(top3) {
     if (user) {
 
       const flag =
-        document.createElement('span');
+  document.createElement('img');
 
-      flag.className = 'rank-flag';
+flag.className = 'rank-flag';
 
-      flag.textContent =
-        countryFlag(user.country_code);
+const countryCode =
+  /^[a-zA-Z]{2}$/.test(user.country_code || '')
+    ? user.country_code.toLowerCase()
+    : 'un';
+
+flag.src =
+  'https://flagcdn.com/32x24/' +
+  countryCode +
+  '.png';
+
+flag.alt = countryCode.toUpperCase();
+
+flag.onerror = function() {
+  this.style.display = 'none';
+};
 
       const nickname =
         document.createElement('span');

@@ -524,8 +524,49 @@ body.obs-mode .navigation {
 
 }
 
-</style>
+   /* GOOGLE PLAY BUTTON */
 
+.store-link {
+  display: inline-block;
+  align-self: center;
+  margin-top: 10px;
+  padding: 14px 24px;
+
+  border: 1px solid #ff5a1f;
+  color: #ff5a1f;
+
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 2px;
+
+  transition: .2s;
+}
+
+.store-link:hover {
+  background: #ff5a1f;
+  color: #050505;
+}
+
+/* OBS BROADCAST */
+
+.obs-address {
+  display: none;
+  color: #888;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+body.obs-mode .store-link {
+  display: none;
+}
+
+body.obs-mode .obs-address {
+  display: block;
+}
+   
+</style>
+   
 </head>
 
 <body>
@@ -608,6 +649,15 @@ body.obs-mode .navigation {
       </a>
 
     </div>
+
+     <a
+  class="store-link"
+  href="https://play.google.com/store/apps/details?id=com.burnglobal.app"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  DOWNLOAD BURN — ANDROID
+</a>
 
   </div>
 
@@ -705,6 +755,19 @@ body.obs-mode .navigation {
     <div class="live-challenge">
       CAN YOU BE #1?
     </div>
+
+     <a
+  class="store-link"
+  href="https://play.google.com/store/apps/details?id=com.burnglobal.app"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  DOWNLOAD BURN — ANDROID
+</a>
+
+<div class="obs-address">
+  burnnothing.com
+</div>
 
     <div class="live-bottom-logo">
       BURN

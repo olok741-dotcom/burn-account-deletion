@@ -1,149 +1,562 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>BURN — Pay money. Get nothing.</title>
+<meta charset="UTF-8">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-    html, body {
-      width: 100%;
-      min-height: 100%;
-      background: #050505;
-      color: #fff;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+<title>BURN — Pay money. Get nothing.</title>
 
-    body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+<style>
 
-    main {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 50px 24px;
-    }
+/* =====================================
+   GLOBAL
+===================================== */
 
-    .hero {
-      width: 100%;
-    }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    /* BURN LOGO */
-    .logo {
-      color: #ff5a1f;
-      font-size: clamp(42px, 5vw, 68px);
-      font-weight: 900;
-      letter-spacing: 14px;
-      margin-top: 35px;
-      margin-bottom: 70px;
-      padding-left: 14px;
-    }
+html, body {
+  width: 100%;
+  min-height: 100%;
+  background: #050505;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-    /* TOTAL */
-    .label {
-      color: #666;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 5px;
-      margin-bottom: 18px;
-    }
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
-    .total {
-      color: #fff;
-      font-size: clamp(64px, 11vw, 150px);
-      line-height: 1;
-      font-weight: 900;
-      letter-spacing: -5px;
-      white-space: nowrap;
-    }
+a {
+  text-decoration: none;
+}
 
-    /* SLOGAN */
-    .message {
-      margin-top: 70px;
-    }
+/* =====================================
+   NAVIGATION
+===================================== */
 
-    .slogan {
-      font-size: clamp(26px, 3.5vw, 42px);
-      line-height: 1.2;
-      font-weight: 900;
-      letter-spacing: 1px;
-      white-space: nowrap;
-    }
+.navigation {
+  position: fixed;
+  top: 28px;
+  right: 35px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  z-index: 100;
+}
 
-    .sub {
-      margin-top: 16px;
-      color: #666;
-      font-size: 15px;
-    }
+.navigation a {
+  color: #777;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  transition: color .2s;
+}
 
-    /* SOCIAL */
-    .social {
-      margin-top: 70px;
-      display: flex;
-      justify-content: center;
-      gap: 28px;
-    }
+.navigation a:hover,
+.navigation a.active {
+  color: #fff;
+}
 
-    .social a {
-      color: #555;
-      text-decoration: none;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
+.live-link {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
 
-    .social a:hover {
-      color: #ff5a1f;
-    }
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ff3b30;
+  box-shadow: 0 0 10px #ff3b30;
+  animation: blink 2s infinite;
+}
 
-    footer {
-      padding: 25px;
-      text-align: center;
-      color: #333;
-      font-size: 10px;
-    }
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .35; }
+}
 
-    footer a {
-      color: #444;
-      text-decoration: none;
-      margin: 0 10px;
-    }
+/* =====================================
+   HOME
+===================================== */
 
-    @media (max-width: 600px) {
-      .logo {
-        margin-bottom: 75px;
-      }
+#homePage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 50px 24px;
+}
 
-      .total {
-        letter-spacing: -3px;
-      }
+.hero {
+  width: 100%;
+}
 
-      .message {
-        margin-top: 55px;
-      }
+.logo {
+  color: #ff5a1f;
+  font-size: clamp(42px, 5vw, 68px);
+  font-weight: 900;
+  letter-spacing: 14px;
+  margin-top: 35px;
+  margin-bottom: 70px;
+  padding-left: 14px;
+}
 
-      .social {
-        margin-top: 55px;
-      }
-    }
-  </style>
+.label {
+  color: #666;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  margin-bottom: 18px;
+}
+
+.total {
+  color: #fff;
+  font-size: clamp(64px, 11vw, 150px);
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -5px;
+  white-space: nowrap;
+}
+
+.message {
+  margin-top: 70px;
+}
+
+.slogan {
+  font-size: clamp(26px, 3.5vw, 42px);
+  line-height: 1.2;
+  font-weight: 900;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.sub {
+  margin-top: 16px;
+  color: #666;
+  font-size: 15px;
+}
+
+.social {
+  margin-top: 70px;
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+}
+
+.social a {
+  color: #555;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.social a:hover {
+  color: #ff5a1f;
+}
+
+footer {
+  padding: 25px;
+  text-align: center;
+  color: #333;
+  font-size: 10px;
+}
+
+footer a {
+  color: #444;
+  margin: 0 10px;
+}
+
+/* =====================================
+   LIVE PAGE
+===================================== */
+
+#livePage {
+  display: none;
+  width: 100%;
+  min-height: 100dvh;
+  padding: 55px 30px 35px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}
+
+body.live-mode #homePage,
+body.live-mode footer {
+  display: none;
+}
+
+body.live-mode #livePage {
+  display: flex;
+}
+
+.live-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.live-indicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #aaa;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 4px;
+}
+
+.live-logo {
+  color: #ff5a1f;
+  font-size: clamp(40px, 5vw, 72px);
+  font-weight: 900;
+  letter-spacing: 14px;
+  padding-left: 14px;
+}
+
+.live-slogan {
+  color: #777;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+/* =====================================
+   LIVE TOTAL
+===================================== */
+
+.live-total-section {
+  width: 100%;
+  margin: 25px 0;
+}
+
+.live-label {
+  color: #777;
+  font-size: clamp(10px, 1.1vw, 14px);
+  font-weight: 800;
+  letter-spacing: 5px;
+  margin-bottom: 18px;
+}
+
+.live-total {
+  font-size: clamp(65px, 10vw, 170px);
+  font-weight: 900;
+  letter-spacing: -5px;
+  line-height: 1;
+  white-space: nowrap;
+  transition: color .3s;
+}
+
+.live-total.flash {
+  color: #ff5a1f;
+}
+
+/* =====================================
+   LEADERBOARD
+===================================== */
+
+.live-board {
+  width: min(650px, 100%);
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #222;
+  padding: 25px 0;
+}
+
+.board-title {
+  color: #777;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 5px;
+  margin-bottom: 24px;
+}
+
+.rank-row {
+  display: grid;
+  grid-template-columns: 65px 1fr auto;
+  align-items: center;
+  text-align: left;
+  gap: 15px;
+  padding: 11px 15px;
+  font-size: clamp(14px, 1.5vw, 20px);
+}
+
+.rank-position {
+  color: #666;
+  font-weight: 900;
+}
+
+.rank-row:first-child .rank-position {
+  color: #ff5a1f;
+}
+
+.rank-name {
+  color: #fff;
+  font-weight: 800;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rank-amount {
+  color: #fff;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.rank-flag {
+  margin-right: 8px;
+}
+
+/* =====================================
+   LAST BURN
+===================================== */
+
+.last-burn {
+  margin: 25px 0;
+}
+
+.last-label {
+  color: #666;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 5px;
+  margin-bottom: 12px;
+}
+
+.last-time {
+  color: #fff;
+  font-size: clamp(22px, 3vw, 36px);
+  font-weight: 900;
+}
+
+/* =====================================
+   LIVE FOOTER
+===================================== */
+
+.live-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 15px;
+}
+
+.live-challenge {
+  font-size: clamp(17px, 2vw, 26px);
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.live-bottom-logo {
+  color: #ff5a1f;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 5px;
+}
+
+/* =====================================
+   EVENT OVERLAY
+===================================== */
+
+.event-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.96);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 500;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .35s, visibility .35s;
+  pointer-events: none;
+  padding: 20px;
+}
+
+.event-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.event-title {
+  color: #ff5a1f;
+  font-size: clamp(28px, 5vw, 70px);
+  font-weight: 900;
+  letter-spacing: 5px;
+  text-align: center;
+}
+
+.event-amount {
+  color: #fff;
+  font-size: clamp(70px, 12vw, 180px);
+  font-weight: 900;
+  margin-top: 25px;
+  letter-spacing: -4px;
+}
+
+.event-sub {
+  color: #777;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  margin-top: 25px;
+  text-align: center;
+}
+
+/* =====================================
+   OBS MODE
+===================================== */
+
+body.obs-mode .navigation {
+  display: none;
+}
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media (max-width: 600px) {
+
+  .navigation {
+    top: 22px;
+    right: 22px;
+    gap: 20px;
+  }
+
+  .logo {
+    margin-bottom: 75px;
+  }
+
+  .total {
+    letter-spacing: -3px;
+  }
+
+  .message {
+    margin-top: 55px;
+  }
+
+  .social {
+    margin-top: 55px;
+    gap: 20px;
+  }
+
+  #livePage {
+    padding: 85px 18px 35px;
+  }
+
+  .live-total {
+    font-size: clamp(55px, 14vw, 95px);
+    letter-spacing: -3px;
+  }
+
+  .live-board {
+    padding: 22px 0;
+  }
+
+  .rank-row {
+    grid-template-columns: 35px minmax(0, 1fr) auto;
+    gap: 8px;
+    padding: 12px 4px;
+  }
+
+  .board-title {
+    font-size: 11px;
+  }
+
+  .live-label {
+    letter-spacing: 3px;
+  }
+
+  .live-slogan {
+    letter-spacing: 2px;
+  }
+
+  .event-title {
+    letter-spacing: 2px;
+  }
+
+}
+
+@media (max-height: 750px) and (min-width: 601px) {
+
+  #livePage {
+    padding-top: 25px;
+    padding-bottom: 20px;
+  }
+
+  .live-total-section {
+    margin: 12px 0;
+  }
+
+  .live-board {
+    padding: 15px 0;
+  }
+
+  .board-title {
+    margin-bottom: 12px;
+  }
+
+  .rank-row {
+    padding: 6px 15px;
+  }
+
+  .last-burn {
+    margin: 12px 0;
+  }
+
+}
+
+</style>
+
 </head>
 
 <body>
 
-<main>
+<!-- =====================================
+     NAVIGATION
+===================================== -->
+
+<nav class="navigation">
+
+  <a href="#home"
+     id="homeNav"
+     class="active">
+    HOME
+  </a>
+
+  <a href="#live"
+     id="liveNav"
+     class="live-link">
+
+    <span class="live-dot"></span>
+
+    LIVE
+
+  </a>
+
+</nav>
+
+
+<!-- =====================================
+     HOME
+===================================== -->
+
+<main id="homePage">
+
   <div class="hero">
 
     <div class="logo">
@@ -173,146 +586,747 @@
     <div class="social">
 
       <a href="https://www.tiktok.com/@burnglobal"
-         target="_blank">
+         target="_blank"
+         rel="noopener noreferrer">
         TIKTOK
       </a>
 
       <a href="https://www.instagram.com/burn_global/"
-         target="_blank">
+         target="_blank"
+         rel="noopener noreferrer">
         INSTAGRAM
       </a>
 
       <a href="https://www.youtube.com/@burnglobal"
-         target="_blank">
+         target="_blank"
+         rel="noopener noreferrer">
         YOUTUBE
       </a>
 
     </div>
 
   </div>
+
 </main>
 
+
+<!-- =====================================
+     LIVE PAGE
+===================================== -->
+
+<main id="livePage">
+
+  <div class="live-header">
+
+    <div class="live-indicator">
+
+      <span class="live-dot"></span>
+
+      <span id="liveStatus">CONNECTING</span>
+
+    </div>
+
+    <div class="live-logo">
+      BURN
+    </div>
+
+    <div class="live-slogan">
+      PAY MONEY. GET NOTHING.
+    </div>
+
+  </div>
+
+
+  <div class="live-total-section">
+
+    <div class="live-label">
+      HUMANITY HAS BURNED
+    </div>
+
+    <div class="live-total"
+         id="liveTotal">
+      —
+    </div>
+
+  </div>
+
+
+  <div class="live-board">
+
+    <div class="board-title">
+      GLOBAL TOP 3
+    </div>
+
+    <div id="leaderboard">
+
+      <div class="rank-row">
+        <span class="rank-position">#1</span>
+        <span class="rank-name">—</span>
+        <span class="rank-amount">—</span>
+      </div>
+
+      <div class="rank-row">
+        <span class="rank-position">#2</span>
+        <span class="rank-name">—</span>
+        <span class="rank-amount">—</span>
+      </div>
+
+      <div class="rank-row">
+        <span class="rank-position">#3</span>
+        <span class="rank-name">—</span>
+        <span class="rank-amount">—</span>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="last-burn">
+
+    <div class="last-label">
+      LAST BURN
+    </div>
+
+    <div class="last-time"
+         id="lastBurnTime">
+      —
+    </div>
+
+  </div>
+
+
+  <div class="live-bottom">
+
+    <div class="live-challenge">
+      CAN YOU BE #1?
+    </div>
+
+    <div class="live-bottom-logo">
+      BURN
+    </div>
+
+  </div>
+
+</main>
+
+
+<!-- =====================================
+     EVENT OVERLAY
+===================================== -->
+
+<div class="event-overlay"
+     id="eventOverlay">
+
+  <div class="event-title"
+       id="eventTitle">
+  </div>
+
+  <div class="event-amount"
+       id="eventAmount">
+  </div>
+
+  <div class="event-sub"
+       id="eventSub">
+  </div>
+
+</div>
+
+
+<!-- =====================================
+     FOOTER
+===================================== -->
+
 <footer>
+
   © 2026 BURN
-  <a href="privacy.html">PRIVACY</a>
-  <a href="delete-account.html">DELETE ACCOUNT</a>
+
+  <a href="privacy.html">
+    PRIVACY
+  </a>
+
+  <a href="delete-account.html">
+    DELETE ACCOUNT
+  </a>
+
 </footer>
 
 
 <script>
-  // =========================================================
-  // BURN — GLOBAL TOTAL
-  // Supabase app_stats → id: global → total_burned
-  // =========================================================
 
-  const SUPABASE_URL =
-    'https://henyqkihesudarbmefkh.supabase.co';
+/* =====================================
+   SUPABASE CONFIG
+===================================== */
 
-  const SUPABASE_KEY =
-    'sb_publishable_MVxSAmIK6avA7wYCBSuGSg_0-5ApdIl';
+const SUPABASE_URL =
+  'https://henyqkihesudarbmefkh.supabase.co';
 
-  const TOTAL_ELEMENT =
-    document.getElementById('burnTotal');
+const SUPABASE_KEY =
+  'sb_publishable_MVxSAmIK6avA7wYCBSuGSg_0-5ApdIl';
 
 
-  // ---------------------------------------------------------
-  // 숫자 표시
-  // ---------------------------------------------------------
+/* =====================================
+   ELEMENTS
+===================================== */
 
-  function formatBurnTotal(value) {
+const homeTotal =
+  document.getElementById('burnTotal');
 
-    const number = Number(value);
+const liveTotal =
+  document.getElementById('liveTotal');
 
-    if (!Number.isFinite(number)) {
-      return '$0';
+const leaderboard =
+  document.getElementById('leaderboard');
+
+const lastBurnTime =
+  document.getElementById('lastBurnTime');
+
+const liveStatus =
+  document.getElementById('liveStatus');
+
+const eventOverlay =
+  document.getElementById('eventOverlay');
+
+const eventTitle =
+  document.getElementById('eventTitle');
+
+const eventAmount =
+  document.getElementById('eventAmount');
+
+const eventSub =
+  document.getElementById('eventSub');
+
+
+/* =====================================
+   STATE
+===================================== */
+
+let previousTotal = null;
+
+let previousBurnId = null;
+
+let previousLeader = null;
+
+let latestBurnDate = null;
+
+let initialized = false;
+
+let requestInProgress = false;
+
+let eventTimer = null;
+
+
+/* =====================================
+   MONEY FORMAT
+===================================== */
+
+function formatMoney(value) {
+
+  const number = Number(value);
+
+  if (!Number.isFinite(number)) {
+    return '—';
+  }
+
+  return '$' + number.toLocaleString(
+    'en-US',
+    {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 2
+    }
+  );
+
+}
+
+
+/* =====================================
+   COUNTRY FLAG
+===================================== */
+
+function countryFlag(code) {
+
+  if (!code || !/^[A-Za-z]{2}$/.test(code)) {
+    return '🌐';
+  }
+
+  const upper = code.toUpperCase();
+
+  return String.fromCodePoint(
+    ...[...upper].map(
+      char => 127397 + char.charCodeAt(0)
+    )
+  );
+
+}
+
+
+/* =====================================
+   NAVIGATION
+===================================== */
+
+const params =
+  new URLSearchParams(window.location.search);
+
+const obsMode =
+  params.get('obs') === '1';
+
+const forcedLive =
+  params.get('live') === '1';
+
+function updatePage() {
+
+  const isLive =
+    obsMode ||
+    forcedLive ||
+    window.location.hash === '#live';
+
+  document.body.classList.toggle(
+    'live-mode',
+    isLive
+  );
+
+  document.body.classList.toggle(
+    'obs-mode',
+    obsMode
+  );
+
+  document.getElementById('homeNav')
+    .classList.toggle('active', !isLive);
+
+  document.getElementById('liveNav')
+    .classList.toggle('active', isLive);
+
+}
+
+window.addEventListener(
+  'hashchange',
+  updatePage
+);
+
+updatePage();
+
+
+/* =====================================
+   LEADERBOARD
+===================================== */
+
+function updateLeaderboard(top3) {
+
+  leaderboard.replaceChildren();
+
+  for (let i = 0; i < 3; i++) {
+
+    const user = top3[i];
+
+    const row =
+      document.createElement('div');
+
+    row.className = 'rank-row';
+
+
+    const position =
+      document.createElement('span');
+
+    position.className = 'rank-position';
+
+    position.textContent = '#' + (i + 1);
+
+
+    const name =
+      document.createElement('span');
+
+    name.className = 'rank-name';
+
+
+    const amount =
+      document.createElement('span');
+
+    amount.className = 'rank-amount';
+
+
+    if (user) {
+
+      const flag =
+        document.createElement('span');
+
+      flag.className = 'rank-flag';
+
+      flag.textContent =
+        countryFlag(user.country_code);
+
+      const nickname =
+        document.createElement('span');
+
+      nickname.textContent =
+        user.nickname || 'ANONYMOUS';
+
+      name.append(flag, nickname);
+
+      amount.textContent =
+        formatMoney(user.amount);
+
+    } else {
+
+      name.textContent = '—';
+
+      amount.textContent = '—';
+
     }
 
-    return '$' + number.toLocaleString(
-      'en-US',
+
+    row.append(
+      position,
+      name,
+      amount
+    );
+
+    leaderboard.appendChild(row);
+
+  }
+
+}
+
+
+/* =====================================
+   LAST BURN TIMER
+===================================== */
+
+function updateLastBurnTimer() {
+
+  if (!latestBurnDate) {
+
+    lastBurnTime.textContent =
+      'NO BURNS YET';
+
+    return;
+  }
+
+  const diff = Math.max(
+    0,
+    Math.floor(
+      (Date.now() - latestBurnDate.getTime()) / 1000
+    )
+  );
+
+  const days =
+    Math.floor(diff / 86400);
+
+  const hours =
+    Math.floor((diff % 86400) / 3600);
+
+  const minutes =
+    Math.floor((diff % 3600) / 60);
+
+  const seconds =
+    diff % 60;
+
+
+  if (days > 0) {
+
+    lastBurnTime.textContent =
+      days + 'd ' +
+      hours + 'h ago';
+
+  } else if (hours > 0) {
+
+    lastBurnTime.textContent =
+      hours + 'h ' +
+      minutes + 'm ago';
+
+  } else if (minutes > 0) {
+
+    lastBurnTime.textContent =
+      minutes + 'm ' +
+      seconds + 's ago';
+
+  } else {
+
+    lastBurnTime.textContent =
+      seconds + 's ago';
+
+  }
+
+}
+
+
+/* =====================================
+   EVENT ANIMATION
+===================================== */
+
+function showEvent(title, amount, sub) {
+
+  clearTimeout(eventTimer);
+
+  eventTitle.textContent = title;
+
+  eventAmount.textContent = amount;
+
+  eventSub.textContent = sub;
+
+  eventOverlay.classList.add('show');
+
+  eventTimer = setTimeout(() => {
+
+    eventOverlay.classList.remove('show');
+
+  }, 4500);
+
+}
+
+
+/* =====================================
+   SUPABASE SNAPSHOT
+===================================== */
+
+async function loadSnapshot() {
+
+  if (requestInProgress) {
+    return;
+  }
+
+  requestInProgress = true;
+
+  try {
+
+    const response = await fetch(
+      SUPABASE_URL +
+      '/rest/v1/rpc/get_burn_live_snapshot',
       {
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 2
+        method: 'POST',
+
+        headers: {
+          'apikey': SUPABASE_KEY,
+          'Content-Type': 'application/json'
+        },
+
+        body: '{}',
+
+        cache: 'no-store'
       }
     );
-  }
 
 
-  // ---------------------------------------------------------
-  // Supabase에서 현재 총액 가져오기
-  // ---------------------------------------------------------
+    if (!response.ok) {
 
-  async function loadBurnTotal() {
-
-    try {
-
-      const response = await fetch(
-        SUPABASE_URL +
-        '/rest/v1/app_stats?id=eq.global&select=total_burned',
-        {
-          method: 'GET',
-
-          headers: {
-            'apikey': SUPABASE_KEY,
-            'Authorization': 'Bearer ' + SUPABASE_KEY
-          },
-
-          cache: 'no-store'
-        }
+      throw new Error(
+        'Supabase error: ' + response.status
       );
 
-
-      if (!response.ok) {
-        throw new Error(
-          'Supabase request failed: ' +
-          response.status
-        );
-      }
-
-
-      const data = await response.json();
-
-
-      if (
-        Array.isArray(data) &&
-        data.length > 0 &&
-        data[0].total_burned !== undefined
-      ) {
-
-        TOTAL_ELEMENT.textContent =
-          formatBurnTotal(
-            data[0].total_burned
-          );
-      }
-
-    } catch (error) {
-
-      console.error(
-        'Failed to load BURN total:',
-        error
-      );
-
-      // 오류가 발생해도 사이트 자체는 정상 표시
-      // 마지막 표시값을 그대로 유지
     }
+
+
+    const data = await response.json();
+
+
+    /* ---------------------------------
+       TOTAL
+    --------------------------------- */
+
+    const total =
+      Number(data.total_burned ?? 0);
+
+    if (!Number.isFinite(total)) {
+      throw new Error('Invalid total');
+    }
+
+    homeTotal.textContent =
+      formatMoney(total);
+
+    liveTotal.textContent =
+      formatMoney(total);
+
+
+    /* ---------------------------------
+       TOP 3
+    --------------------------------- */
+
+    const top3 =
+      Array.isArray(data.top3)
+        ? data.top3
+        : [];
+
+    updateLeaderboard(top3);
+
+
+    /* ---------------------------------
+       LATEST BURN
+    --------------------------------- */
+
+    const latest =
+      data.latest_burn || null;
+
+    const latestId =
+      latest ? String(latest.id) : null;
+
+    if (latest && latest.created_at) {
+
+      const parsedDate =
+        new Date(latest.created_at);
+
+      latestBurnDate =
+        Number.isNaN(parsedDate.getTime())
+          ? null
+          : parsedDate;
+
+    } else {
+
+      latestBurnDate = null;
+
+    }
+
+    updateLastBurnTimer();
+
+
+    /* ---------------------------------
+       CURRENT LEADER
+    --------------------------------- */
+
+    const leader =
+      top3.length > 0
+        ? top3[0]
+        : null;
+
+    const leaderKey =
+      leader
+        ? JSON.stringify([
+            leader.nickname,
+            leader.country_code
+          ])
+        : null;
+
+
+    /* ---------------------------------
+       NEW BURN DETECTION
+    --------------------------------- */
+
+    if (initialized) {
+
+      const totalIncreased =
+        previousTotal !== null &&
+        total > previousTotal;
+
+      const newBurn =
+        latestId !== null &&
+        previousBurnId !== null &&
+        latestId !== previousBurnId &&
+        totalIncreased;
+
+      const leaderChanged =
+        previousLeader !== null &&
+        leaderKey !== null &&
+        previousLeader !== leaderKey &&
+        totalIncreased;
+
+
+      if (newBurn) {
+
+        if (leaderChanged) {
+
+          showEvent(
+            'NEW WORLD #1',
+            leader.nickname || 'ANONYMOUS',
+            'THE CROWN HAS CHANGED HANDS'
+          );
+
+        } else {
+
+          showEvent(
+            'NEW BURN',
+            formatMoney(latest.amount),
+            'PAY MONEY. GET NOTHING.'
+          );
+
+        }
+
+        liveTotal.classList.add('flash');
+
+        setTimeout(() => {
+
+          liveTotal.classList.remove('flash');
+
+        }, 1800);
+
+      }
+
+    }
+
+
+    /* ---------------------------------
+       SAVE STATE
+    --------------------------------- */
+
+    previousTotal = total;
+
+    previousBurnId = latestId;
+
+    previousLeader = leaderKey;
+
+    initialized = true;
+
+    liveStatus.textContent =
+      'LIVE DATA';
+
+
+  } catch (error) {
+
+    console.error(
+      'BURN LIVE ERROR:',
+      error
+    );
+
+    liveStatus.textContent =
+      'RECONNECTING';
+
+  } finally {
+
+    requestInProgress = false;
+
   }
 
-
-  // ---------------------------------------------------------
-  // 최초 로딩
-  // ---------------------------------------------------------
-
-  loadBurnTotal();
+}
 
 
-  // ---------------------------------------------------------
-  // 10초마다 총액 확인
-  // 페이지 새로고침 필요 없음
-  // ---------------------------------------------------------
+/* =====================================
+   START
+===================================== */
 
-  setInterval(
-    loadBurnTotal,
-    10000
-  );
+loadSnapshot();
+
+
+/* =====================================
+   UPDATE EVERY 15 SECONDS
+===================================== */
+
+setInterval(
+  loadSnapshot,
+  15000
+);
+
+
+/* =====================================
+   TIMER UPDATE
+===================================== */
+
+setInterval(
+  updateLastBurnTimer,
+  1000
+);
+
+
+/* =====================================
+   RETURN TO PAGE
+===================================== */
+
+document.addEventListener(
+  'visibilitychange',
+  () => {
+
+    if (!document.hidden) {
+      loadSnapshot();
+    }
+
+  }
+);
 
 </script>
 
